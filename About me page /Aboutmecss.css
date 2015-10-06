@@ -1,0 +1,51 @@
+* {
+  color: grey;
+  font-family: Lucida Sans Typewriter;
+  text-align: center;
+}
+
+/* start masthead */
+.masthead {
+    padding: 6em 0;
+  
+    background-image: url(http://i173.photobucket.com/albums/w79/Luke_Bucciarelli/photo-1437532437759-a0ce0535dfed_zps4vlfflxh.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    border-top: solid 1em grey;
+}
+
+.masthead-intro {
+    margin-bottom: 0.1em;
+}
+
+.masthead-heading {
+    margin-top: -0.2em;
+}
+/* end masthead */
+
+/* start sections */
+."part-one", ."part-two", ."part-three" {
+    max-width: 38em;
+}
+/* end sections */
+
+.footer {
+  padding: 1em 0;
+  
+  background-image: url(http://i65.photobucket.com/albums/h235/Ignwar/Album%20Clouds/CloudBreakColumbusIndiana.jpg);
+}
+
+footer a, footer span {
+   display: block;
+   padding: .3em 0;
+}
+
+@media only screen and (max-width: 500px) {
+    .masthead {
+        padding: 3em 0;
+    }
+    .masthead-heading {
+        font-size: 3em;
+    }
+}
