@@ -99,4 +99,12 @@ $(document).ready(function(){
 			alert("now Im doing Bikram yoga on the sun!!");
 }
 
+ function comparisonAmount(){
+        if (userGuess - secretNumber > 0) {
+            negativeAmount();
+        } else {
+            positiveAmount();
+        }
+    }
+
 });
