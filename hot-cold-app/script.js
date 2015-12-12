@@ -1,110 +1,83 @@
-
 $(document).ready(function(){
-	
-	/*--- Display information modal box ---*/
-  	$(".what").click(function(){
-    	$(".overlay").fadeIn(1000);
 
-  	});
+  var secretnumber = parseInt(Math.random()*100);
+  console.log(secretnumber);
 
-  	/*--- Hide information modal box ---*/
-  	$("a.close").click(function(){
-  		$(".overlay").fadeOut(1000);
-  	});
+  var $ul =$('#guessList'); 
 
+  $('.js-guess-button').click(function(event) {
+    event.preventDefault();
+    var guessedNumber = $('.js-user-guess-number').val();
+    var message = compareNumbers(guessedNumber, secretnumber); 
+    $ul.append('<ul></ul>')
+  });
 
-	var secretNumber = 0;
-    var userGuess = 0;
-    var guessCount = 0;
-    var finish = false;
+  function compareNumbers(guessedNumber, secretNumber) {
+    var message = '';
 
- 
+    if(guessedNumber == secretNumber) {
+      $ul.append('<li>You Nailed IT !!</li>');
+    }
 
- //randon # generator // 
-  
-  function secretNumber() {
-  		secretnumber = (Math.random()*100);
-  		console.log("secretnumber");
-  }
-
-  secretNumber();
-
-//userGuess Logic // 
-
-	function positiveamount(); 
-
-	if (userGuess && secretNumber === 'secretnumber'){
-            alert("You win great job, you must have been really bored!");
-
-    else if (userGuess && secretnumber) > 60); {
-			alert("You are super cold, where's your jacket?");
-}
-	else if (userGuess && secretnumber) > 50); {
-			alert("still really cold!!!");
-}
-	else if (userGuess && secretnumber) > 40); {
-			alert("sightly warm(er) but do better!");
-}
-	else if (userGuess && secretnumber) > 30); {
-			alert("getting somewhat warm!");
-}
-	else if (userGuess && secretnumber) > 20); {
-			alert("now i can actually take my coat off! getting warm!!");
-}
-	else if (userGuess && secretnumber) > 10); {
-			alert("VERY WARM BUD!!");
-}
-	else if (userGuess && secretnumber) > 5); {
-			alert("dude really warm!");			
-}
-	else if (userGuess && secretnumber) > 3); {
-			alert("im sweasting, it/'s like I/'m doing Bikram yoga!");
-}
-	else if (userGuess && secretnumber) > 2); {
-			alert("now Im doing Bikram yoga on the sun!!");
-}
-
-	// decreasin userguess logic // 
-    
-	function negativeamount(); 
-
-	if (userGuess && secretNumber === 'secretnumber'){
-            alert("You win great job, you must have been really bored!");
-}
-    else if (userGuess && secretnumber) < 60); {
-			alert("You are super cold, where's your jacket?");
-}
-	else if (userGuess && secretnumber) < 50); {
-			alert("still really cold!!!");
-}
-	else if (userGuess && secretnumber) < 40); {
-			alert("sightly warm(er) but do better!");
-}
-	else if (userGuess && secretnumber) < 30); {
-			alert("getting somewhat warm!");
-}
-	else if (userGuess && secretnumber) < 20); {
-			alert("now i can actually take my coat off! getting warm!!");
-}
-	else if (userGuess && secretnumber) < 10); {
-			alert("VERY WARM BUD!!");
-}
-	else if (userGuess && secretnumber) < 5); {
-			alert("dude really warm!");			
-}
-	else if (userGuess && secretnumber) < 3); {
-			alert("im sweasting, it/'s like I/'m doing Bikram yoga!");
-}
-	else if (userGuess && secretnumber) < 2); {
-			alert("now Im doing Bikram yoga on the sun!!");
-}
-
- function comparisonAmount(){
-        if (userGuess - secretNumber > 0) {
-            negativeAmount();
-        } else {
-            positiveAmount();
+    else if(guessedNumber > secretNumber) {
+        
+        if(guessedNumber - secretNumber <= 10){
+            $ul.append('<li>so hot right now</li>');
+        }
+        else if (guessedNumber - secretNumber < 15){
+            $ul.append('<ul>very warm</ul>');
+        }
+        else if (guessedNumber - secretNumber < 20){
+            $ul.append('<li>pretty cool now</li>');
+        }
+        else if (guessedNumber - secretNumber < 30) {
+          $ul.append('<li>even colder now</li>');
+        }
+        else if (guessedNumber - secretNumber < 40){
+            $ul.append('<ul>straight cold now</ul>');
+        }
+        else if (guessedNumber - secretNumber < 50){
+            $ul.append('<ul>brrrrrrr</ul>');
         }
     }
+
+    else {
+        if(secretNumber - guessedNumber <= 10){
+           $ul.append('<li>so hot right now</li>');
+        }
+        else if (guessedNumber - secretNumber > 15){
+            $ul.append('<ul>very warm</ul>');
+        }
+        else if (secretNumber - guessedNumber > 20){
+            $ul.append('<li>pretty cold now</li>');
+        }
+        else if (guessedNumber - secretNumber > 30){
+            $ul.append('<ul>even colder now</ul>');
+        }
+        else if (guessedNumber - secretNumber > 40){
+            $ul.append('<ul>straight cold now</ul>');
+        }
+        else if (guessedNumber - secretNumber > 50){
+            $ul.append('<ul>brrrrrrr</ul>');
+        }
+      }  
+  };
+
+  // new game code// 
+
+$('.new').click(function newGame(){
+    console.log("it works");
+    $('.userGuess').val('');
+    $('.guessList li').remove();
+});
+    
+  // guess count feature //
+  
+  var guessCount = 0;
+
+  function setCount(count){
+        $('#count').text(guessCount);
+    }
+
 
 });
